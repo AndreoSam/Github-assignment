@@ -21,6 +21,8 @@ const FormPage: React.FC = () => {
     {}
   );
 
+  //  * @param {keyof FormData} name - The name of the field being validated.
+  //  * @param {string} value - The value of the field being validated.
   const validateField = (name: keyof FormData, value: string) => {
     const rule = validationRules[name];
     const rules = validationRules[name];
@@ -43,6 +45,8 @@ const FormPage: React.FC = () => {
     });
   };
 
+  //  * handleSubmit Handles form submission, validates inputs, and submits data to the API.
+  //  * @param e - The form event.
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let newErrors: Partial<Record<keyof FormData, string>> = {};
@@ -72,6 +76,8 @@ const FormPage: React.FC = () => {
     } catch (error) {}
   };
 
+  // * handleInputChange Handles input change and triggers validation.
+  // * @param e - The input change event.
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -98,6 +104,7 @@ const FormPage: React.FC = () => {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Employee Information Fields */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Employee Information</h3>
             <div className="grid grid-cols-2 gap-4">
@@ -133,7 +140,6 @@ const FormPage: React.FC = () => {
               </div>
             </div>
           </div>
-
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -255,6 +261,7 @@ const FormPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Privacy Consent Checkbox */}
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
               <Checkbox
@@ -283,7 +290,8 @@ const FormPage: React.FC = () => {
               </span>
             )}
           </div>
-
+          
+          {/* Submit and Cancel Buttons */}
           <div className="flex justify-end space-x-8" id="donttouch">
             <div className="relative">
               <Button
